@@ -22,7 +22,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint \"src/**/*.+(js|ts|jsx|tsx)\"",
-    "format": " prettier --write \"src/**/*.+(js|ts|jsx|tsx)\""
+    "format": " prettier --write \"src/**/*.+(js|ts|jsx|tsx)\"",
+    "prepare": "husky"
   },
   "eslintConfig": {
     "extends": [
@@ -43,12 +44,20 @@
     ]
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
     "@typescript-eslint/eslint-plugin": "^5.50.0",
     "@typescript-eslint/parser": "^5.50.0",
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
+    "husky": "^9.1.1",
     "prettier": "^2.8.3"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }  
   }
 }
