@@ -1,0 +1,47 @@
+.container {
+  margin-bottom: 20px;
+  padding: 12px;
+  border-radius: 3px;
+  background-color: #fff;
+}
+.container:hover {
+  -webkit-box-shadow: 0 4px 10px #eBeBeB;
+          box-shadow: 0 4px 10px #eBeBeB;
+}
+
+.title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.title .left {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.title .right {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: right;
+}
+
+.button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.button-container .left {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.button-container .right {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: right;
+}
+.button-container .right button {
+  color: #999;
+}/*# sourceMappingURL=QuestionCard.module.css.map */

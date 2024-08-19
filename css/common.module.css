@@ -1,0 +1,52 @@
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.header .left {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.header .right {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: right;
+}
+
+.content {
+  position: relative;
+  height: calc(100vh - 64px - 67px - 100px - 18px);
+  overflow-y: scroll;
+  margin-bottom: 20px;
+  scroll-behavior: smooth;
+}
+.content .scrolltop {
+  position: fixed;
+  top: 70%;
+  right: 30px;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+
+.content_star {
+  height: calc(100vh - 64px - 67px - 190px - 18px);
+  overflow-y: scroll;
+  margin-bottom: 20px;
+}
+
+.content_trash {
+  height: calc(100vh - 64px - 67px - 190px - 18px);
+  overflow-y: hidden;
+  margin-bottom: 20px;
+}
+
+.footer {
+  text-align: center;
+  margin: 5px 0;
+  color: #ccc;
+}/*# sourceMappingURL=common.module.css.map */

@@ -1,0 +1,29 @@
+.wrapper {
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.wrapper .title {
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+}
+.wrapper .selected {
+  color: #1890ff;
+}
+.wrapper .handler {
+  width: 50px;
+  margin-left: 5px;
+  text-align: end;
+}
+.wrapper .handler .btn {
+  opacity: 0.2;
+}
+.wrapper:hover .handler .btn {
+  opacity: 1;
+}/*# sourceMappingURL=Layers.module.css.map */

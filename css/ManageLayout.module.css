@@ -1,0 +1,20 @@
+.container {
+  padding: 24px 0;
+  max-width: 90vw;
+  min-width: 550px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.left {
+  width: 120px;
+}
+
+.right {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-left: 60px;
+}/*# sourceMappingURL=ManageLayout.module.css.map */

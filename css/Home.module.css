@@ -1,0 +1,26 @@
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: calc(100vh - 64px - 67px);
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#09203f), to(#537895));
+  background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
+}
+.container .info {
+  text-align: center;
+}
+.container .info button {
+  height: 60px;
+  font-size: 24px;
+  border-radius: 3px;
+}/*# sourceMappingURL=Home.module.css.map */
