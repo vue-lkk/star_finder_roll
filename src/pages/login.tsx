@@ -1,5 +1,13 @@
 import React, { FC, useEffect } from 'react'
-import { Space, Typography, Button, Form, Input, Checkbox, message } from 'antd'
+import {
+  Space,
+  Typography,
+  Button,
+  Form,
+  Input,
+  Checkbox,
+  message,
+} from 'antd'
 import styles from './login.module.scss'
 import { UserAddOutlined } from '@ant-design/icons'
 import { Link, useNavigate } from 'react-router-dom'
@@ -16,7 +24,10 @@ const Login: FC = () => {
   const PASSWORD_KEY = 'password'
 
   // 存储用户信息函数
-  function remenberUser(username: string, password: string) {
+  function remenberUser(
+    username: string,
+    password: string
+  ) {
     localStorage.setItem(USERNAME_KEY, username)
     localStorage.setItem(PASSWORD_KEY, password)
   }
@@ -102,9 +113,20 @@ const Login: FC = () => {
             label="用户名"
             name="username"
             rules={[
-              { required: true, message: '请输入用户名称!' },
-              { type: 'string', min: 5, max: 20, message: '字符长度在 5~20 之间!' },
-              { pattern: /^\w+$/, message: '只能是字母、数字、下划线' },
+              {
+                required: true,
+                message: '请输入用户名称!',
+              },
+              {
+                type: 'string',
+                min: 5,
+                max: 20,
+                message: '字符长度在 5~20 之间!',
+              },
+              {
+                pattern: /^\w+$/,
+                message: '只能是字母、数字、下划线',
+              },
             ]}
           >
             <Input />
@@ -113,12 +135,18 @@ const Login: FC = () => {
           <Form.Item
             label="密码"
             name="password"
-            rules={[{ required: true, message: '请输入密码!' }]}
+            rules={[
+              { required: true, message: '请输入密码!' },
+            ]}
           >
             <Input.Password />
           </Form.Item>
 
-          <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
+          <Form.Item
+            name="remember"
+            valuePropName="checked"
+            wrapperCol={{ offset: 8, span: 16 }}
+          >
             <Checkbox>记住我</Checkbox>
           </Form.Item>
 

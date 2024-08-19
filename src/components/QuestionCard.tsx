@@ -1,6 +1,15 @@
 import React, { FC, useState } from 'react'
 import styles from './QuestionCard.module.scss'
-import { Space, Button, Divider, Tag, Popconfirm, Modal, message, Typography } from 'antd'
+import {
+  Space,
+  Button,
+  Divider,
+  Tag,
+  Popconfirm,
+  Modal,
+  message,
+  Typography,
+} from 'antd'
 import {
   EditOutlined,
   LineChartOutlined,
@@ -13,7 +22,10 @@ import {
 import { useNavigate, Link } from 'react-router-dom'
 import { useRequest } from 'ahooks'
 // 接口
-import { updateQuestionService, duplicateQuestionService } from '../services/question'
+import {
+  updateQuestionService,
+  duplicateQuestionService,
+} from '../services/question'
 const { confirm } = Modal
 const { Title } = Typography
 
@@ -28,57 +40,73 @@ type PropsType = {
 }
 
 const QuestionCard: FC<PropsType> = (props: PropsType) => {
-  const { _id, title, isPublished, isStar, answerCount, createdAt } = props
+  const {
+    _id,
+    title,
+    isPublished,
+    isStar,
+    answerCount,
+    createdAt,
+  } = props
   const navigate = useNavigate()
 
   // 修改标星
   const [isStarState, setIsStarState] = useState(isStar)
   // 发送请求修改标星
-  const { loading: changeStarLoading, run: changeStar } = useRequest(
-    async () => {
-      await updateQuestionService(_id, { isStar: !isStarState })
-    },
-    {
-      manual: true,
-      onSuccess() {
-        setIsStarState(!isStarState) // 更新isStar
-        message.success('更新成功')
+  const { loading: changeStarLoading, run: changeStar } =
+    useRequest(
+      async () => {
+        await updateQuestionService(_id, {
+          isStar: !isStarState,
+        })
       },
-    }
-  )
+      {
+        manual: true,
+        onSuccess() {
+          setIsStarState(!isStarState) // 更新isStar
+          message.success('更新成功')
+        },
+      }
+    )
 
   // 复制
-  const { loading: duplicateLoading, run: duplicate } = useRequest(
-    // async () => {
-    //   const res = await duplicateQuestionService(_id)
-    //   // 这里需要返回请求结果
-    //   return res
-    // }
-    // 或者：直接这样写
-    async () => await duplicateQuestionService(_id),
-    {
-      manual: true,
-      // 在这里才能拿到请求的数据
-      onSuccess(result: any, data) {
-        console.log(result, data)
-        message.success('复制成功')
-        navigate(`/question/edit/${result._id}`) // 跳转到问卷编辑页
-      },
-    }
-  )
+  const { loading: duplicateLoading, run: duplicate } =
+    useRequest(
+      // async () => {
+      //   const res = await duplicateQuestionService(_id)
+      //   // 这里需要返回请求结果
+      //   return res
+      // }
+      // 或者：直接这样写
+      async () => await duplicateQuestionService(_id),
+      {
+        manual: true,
+        // 在这里才能拿到请求的数据
+        onSuccess(result: any, data) {
+          console.log(result, data)
+          message.success('复制成功')
+          navigate(`/question/edit/${result._id}`) // 跳转到问卷编辑页
+        },
+      }
+    )
 
   // 删除
-  const [isDeletedState, setIsDeletedState] = useState(false)
-  const { loading: delLoading, run: deleteQuestion } = useRequest(
-    async () => await updateQuestionService(_id, { isDeleted: true }),
-    {
-      manual: true,
-      onSuccess() {
-        message.success('删除成功')
-        setIsDeletedState(true)
-      },
-    }
-  )
+  const [isDeletedState, setIsDeletedState] =
+    useState(false)
+  const { loading: delLoading, run: deleteQuestion } =
+    useRequest(
+      async () =>
+        await updateQuestionService(_id, {
+          isDeleted: true,
+        }),
+      {
+        manual: true,
+        onSuccess() {
+          message.success('删除成功')
+          setIsDeletedState(true)
+        },
+      }
+    )
   function del() {
     confirm({
       title: '确定删除该问卷？',
@@ -96,9 +124,19 @@ const QuestionCard: FC<PropsType> = (props: PropsType) => {
       <div className={styles.title}>
         {/* 左侧：问卷名称 */}
         <div className={styles.left}>
-          <Link to={isPublished ? `/question/stat/${_id}` : `/question/edit/${_id}`}>
+          <Link
+            to={
+              isPublished
+                ? `/question/stat/${_id}`
+                : `/question/edit/${_id}`
+            }
+          >
             {/* 间隔组件 */}
-            <Space>{isStarState && <StarFilled style={{ color: '#ffb806' }} />}</Space>
+            <Space>
+              {isStarState && (
+                <StarFilled style={{ color: '#ffb806' }} />
+              )}
+            </Space>
             {title}
           </Link>
         </div>
@@ -115,7 +153,11 @@ const QuestionCard: FC<PropsType> = (props: PropsType) => {
             )}
             <span>答卷: {answerCount}</span>
             <span
-              style={{ background: 'rgb(240 242 255)', padding: '2px 4px', borderRadius: '7px' }}
+              style={{
+                background: 'rgb(240 242 255)',
+                padding: '2px 4px',
+                borderRadius: '7px',
+              }}
             >
               <FieldTimeOutlined />
               {createdAt}
@@ -134,7 +176,9 @@ const QuestionCard: FC<PropsType> = (props: PropsType) => {
               type="text"
               size="small"
               icon={<EditOutlined />}
-              onClick={() => navigate(`/question/edit/${_id}`)}
+              onClick={() =>
+                navigate(`/question/edit/${_id}`)
+              }
             >
               编辑问卷
             </Button>
@@ -142,7 +186,9 @@ const QuestionCard: FC<PropsType> = (props: PropsType) => {
               type="text"
               size="small"
               icon={<LineChartOutlined />}
-              onClick={() => navigate(`/question/stat/${_id}`)}
+              onClick={() =>
+                navigate(`/question/stat/${_id}`)
+              }
             >
               数据统计
             </Button>
@@ -166,7 +212,12 @@ const QuestionCard: FC<PropsType> = (props: PropsType) => {
               cancelText="取消"
               onConfirm={duplicate}
             >
-              <Button type="text" size="small" icon={<CopyOutlined />} disabled={duplicateLoading}>
+              <Button
+                type="text"
+                size="small"
+                icon={<CopyOutlined />}
+                disabled={duplicateLoading}
+              >
                 复制
               </Button>
             </Popconfirm>

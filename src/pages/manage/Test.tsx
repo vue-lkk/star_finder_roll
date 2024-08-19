@@ -3,7 +3,9 @@ import React, { ChangeEvent, FC, useState } from 'react'
 const Test: FC = () => {
   // ------------------- 输入框 --------------------------------
   const [text, setText] = useState<string>('lkk')
-  function handleChange(event: ChangeEvent<HTMLInputElement>) {
+  function handleChange(
+    event: ChangeEvent<HTMLInputElement>
+  ) {
     console.log(text)
     setText(event.target.value)
   }
@@ -11,7 +13,9 @@ const Test: FC = () => {
 
   // ------------------- 文本区域 --------------------------------
   const [textar, setTextarea] = useState<string>('lkk')
-  function handleTextareaChange(event: ChangeEvent<HTMLTextAreaElement>) {
+  function handleTextareaChange(
+    event: ChangeEvent<HTMLTextAreaElement>
+  ) {
     console.log(textar)
     setTextarea(event.target.value)
   }
@@ -23,14 +27,18 @@ const Test: FC = () => {
 
   // ------------------- 单选框 --------------------------------
   const [gender, setGender] = useState('male')
-  function handleRadioChange(event: ChangeEvent<HTMLInputElement>) {
+  function handleRadioChange(
+    event: ChangeEvent<HTMLInputElement>
+  ) {
     setGender(event.target.value)
   }
   // ------------------- 单选框 --------------------------------
 
   // ------------------- 复选框：单个 --------------------------------
   const [checked, setChecked] = useState(false)
-  function handleCheckboxChangeOne(event: ChangeEvent<HTMLInputElement>) {
+  function handleCheckboxChangeOne(
+    event: ChangeEvent<HTMLInputElement>
+  ) {
     setChecked(!checked)
     // setChecked(event.target.checked)
   }
@@ -38,13 +46,17 @@ const Test: FC = () => {
 
   // ------------------- 复选框:多个 --------------------------------
   const [web, setWeb] = useState<string[]>(['React18'])
-  function handleCheckboxChange(event: ChangeEvent<HTMLInputElement>) {
+  function handleCheckboxChange(
+    event: ChangeEvent<HTMLInputElement>
+  ) {
     // includes判断数组中是否存在：返回布尔值
     const isChecked = web.includes(event.target.value)
     setWeb(web => {
       if (isChecked) {
         // 如果已经存在,筛选掉
-        return web.filter(item => item !== event.target.value)
+        return web.filter(
+          item => item !== event.target.value
+        )
       }
       // 否则，加进数组
       return [...web, event.target.value]
@@ -54,12 +66,16 @@ const Test: FC = () => {
 
   // ------------------- 下拉框 --------------------------------
   const [lang, setLang] = useState('js')
-  function handleSelectChange(event: ChangeEvent<HTMLSelectElement>) {
+  function handleSelectChange(
+    event: ChangeEvent<HTMLSelectElement>
+  ) {
     setLang(event.target.value)
   }
   // ------------------- 下拉框 --------------------------------
 
-  function handleSumbit(event: ChangeEvent<HTMLFormElement>) {
+  function handleSumbit(
+    event: ChangeEvent<HTMLFormElement>
+  ) {
     event.preventDefault() //阻止默认行为
     // js自己提交数据
   }
@@ -107,14 +123,23 @@ const Test: FC = () => {
         onChange={handleCheckboxChange}
       />
       {/* 隐藏的表单项 */}
-      <input type="hidden" name="qd" value={JSON.stringify(web)} />
+      <input
+        type="hidden"
+        name="qd"
+        value={JSON.stringify(web)}
+      />
 
       <br />
       <br />
 
       {/* 复选框:单个*/}
       <label htmlFor="checkbox1">React</label>
-      <input type="checkbox" id="checkbox1" checked={checked} onChange={handleCheckboxChangeOne} />
+      <input
+        type="checkbox"
+        id="checkbox1"
+        checked={checked}
+        onChange={handleCheckboxChangeOne}
+      />
 
       <br />
       <br />
@@ -145,7 +170,11 @@ const Test: FC = () => {
       <br />
 
       {/* 文本区域*/}
-      <textarea value={textar} onChange={handleTextareaChange} rows={4} />
+      <textarea
+        value={textar}
+        onChange={handleTextareaChange}
+        rows={4}
+      />
       <div>{textar}</div>
       <p dangerouslySetInnerHTML={genHtml()} />
 

@@ -18,9 +18,15 @@ const Home: FC = () => {
     <div className={styles.container}>
       <div className={styles.info}>
         <Title>问卷调查 | 在线投票</Title>
-        <Paragraph>已累计创建问卷 100 份，发布问卷 90 份，收到问卷 980 份</Paragraph>
+        <Paragraph>
+          已累计创建问卷 100 份，发布问卷 90 份，收到问卷
+          980 份
+        </Paragraph>
         <div>
-          <Button type="primary" onClick={() => naviagte('/manage/list')}>
+          <Button
+            type="primary"
+            onClick={() => naviagte('/manage/list')}
+          >
             开始使用
           </Button>
         </div>

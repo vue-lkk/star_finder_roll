@@ -1,8 +1,16 @@
 import React, { FC, useEffect, useState } from 'react'
 import { Pagination } from 'antd'
 // 常量
-import { LIST_PAGE_PARAM_KEY, LIST_PAGE_SIZE_PARAM_KEY, LIST_PAGE_SIZE } from '../constant'
-import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
+import {
+  LIST_PAGE_PARAM_KEY,
+  LIST_PAGE_SIZE_PARAM_KEY,
+  LIST_PAGE_SIZE,
+} from '../constant'
+import {
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from 'react-router-dom'
 
 type PropType = {
   total: number
@@ -19,9 +27,15 @@ const ListPage: FC<PropType> = (props: PropType) => {
   const [searchParams] = useSearchParams()
   useEffect(() => {
     // 当前页
-    const page = parseInt(searchParams.get(LIST_PAGE_PARAM_KEY) || '') || 1
+    const page =
+      parseInt(
+        searchParams.get(LIST_PAGE_PARAM_KEY) || ''
+      ) || 1
     // 每页长度
-    const pageSize = parseInt(searchParams.get(LIST_PAGE_SIZE_PARAM_KEY) || '') || LIST_PAGE_SIZE
+    const pageSize =
+      parseInt(
+        searchParams.get(LIST_PAGE_SIZE_PARAM_KEY) || ''
+      ) || LIST_PAGE_SIZE
     setCurrent(page)
     setPageSize(pageSize)
   }, [searchParams])
@@ -29,10 +43,16 @@ const ListPage: FC<PropType> = (props: PropType) => {
   // 当 page pageSize 改变时， 跳转页面（改变 url 参数）
   const navigate = useNavigate()
   const { pathname } = useLocation()
-  function handlePageChange(page: number, pageSize: number) {
+  function handlePageChange(
+    page: number,
+    pageSize: number
+  ) {
     // 设置为新的
     searchParams.set(LIST_PAGE_PARAM_KEY, page.toString())
-    searchParams.set(LIST_PAGE_SIZE_PARAM_KEY, pageSize.toString())
+    searchParams.set(
+      LIST_PAGE_SIZE_PARAM_KEY,
+      pageSize.toString()
+    )
 
     navigate({
       pathname,

@@ -1,5 +1,12 @@
 import React, { FC } from 'react'
-import { Space, Typography, Button, Form, Input, message } from 'antd'
+import {
+  Space,
+  Typography,
+  Button,
+  Form,
+  Input,
+  message,
+} from 'antd'
 import styles from './register.module.scss'
 import { UserAddOutlined } from '@ant-design/icons'
 import { Link, useNavigate } from 'react-router-dom'
@@ -53,9 +60,20 @@ const Register: FC = () => {
             label="用户名"
             name="username"
             rules={[
-              { required: true, message: '请输入用户名称!' },
-              { type: 'string', min: 5, max: 20, message: '字符长度在 5~20 之间!' },
-              { pattern: /^\w+$/, message: '只能是字母、数字、下划线' },
+              {
+                required: true,
+                message: '请输入用户名称!',
+              },
+              {
+                type: 'string',
+                min: 5,
+                max: 20,
+                message: '字符长度在 5~20 之间!',
+              },
+              {
+                pattern: /^\w+$/,
+                message: '只能是字母、数字、下划线',
+              },
             ]}
           >
             <Input />
@@ -64,7 +82,9 @@ const Register: FC = () => {
           <Form.Item
             label="密码"
             name="password"
-            rules={[{ required: true, message: '请输入密码!' }]}
+            rules={[
+              { required: true, message: '请输入密码!' },
+            ]}
           >
             <Input.Password />
           </Form.Item>
@@ -77,10 +97,15 @@ const Register: FC = () => {
               { required: true, message: '请确认密码!' },
               ({ getFieldValue }) => ({
                 validator(_, value) {
-                  if (!value || getFieldValue('password') === value) {
+                  if (
+                    !value ||
+                    getFieldValue('password') === value
+                  ) {
                     return Promise.resolve()
                   }
-                  return Promise.reject(new Error('两次密码不一致!'))
+                  return Promise.reject(
+                    new Error('两次密码不一致!')
+                  )
                 },
               }),
             ]}

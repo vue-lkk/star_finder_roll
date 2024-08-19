@@ -7,7 +7,8 @@ import { useDispatch } from 'react-redux'
 import { loginReducer } from '../store/userReducer'
 
 function useLoadUserData() {
-  const [waitingUserData, setWaitingUserData] = useState(true)
+  const [waitingUserData, setWaitingUserData] =
+    useState(true)
   const dispatch = useDispatch()
 
   // 利用ahooks的useRequest 发送请求

@@ -16,7 +16,9 @@ type SearchOption = {
   isDeleted: boolean
 }
 
-function useLoadQuestionListData(options: Partial<SearchOption> = {}) {
+function useLoadQuestionListData(
+  options: Partial<SearchOption> = {}
+) {
   // isStar：标星，isDeleted：回收站
   const { isStar, isDeleted } = options
   const [searchParams] = useSearchParams()
@@ -24,14 +26,27 @@ function useLoadQuestionListData(options: Partial<SearchOption> = {}) {
   const { data, loading, error, refresh } = useRequest(
     async () => {
       // 获取到搜索关键字
-      const keyword = searchParams.get(LIST_SEARCH_PARAM_KEY) || ''
+      const keyword =
+        searchParams.get(LIST_SEARCH_PARAM_KEY) || ''
       // 当前页
-      const page = parseInt(searchParams.get(LIST_PAGE_PARAM_KEY) || '') || 1
+      const page =
+        parseInt(
+          searchParams.get(LIST_PAGE_PARAM_KEY) || ''
+        ) || 1
       // 每页长度
-      const pageSize = parseInt(searchParams.get(LIST_PAGE_SIZE_PARAM_KEY) || '') || LIST_PAGE_SIZE
+      const pageSize =
+        parseInt(
+          searchParams.get(LIST_PAGE_SIZE_PARAM_KEY) || ''
+        ) || LIST_PAGE_SIZE
 
       // 发送请求
-      const data = await getQuestionListService({ keyword, isStar, isDeleted, page, pageSize })
+      const data = await getQuestionListService({
+        keyword,
+        isStar,
+        isDeleted,
+        page,
+        pageSize,
+      })
       // 必须返回请求回来的数据
       return data
     },

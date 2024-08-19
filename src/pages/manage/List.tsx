@@ -1,4 +1,10 @@
-import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
+import React, {
+  FC,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import styles from './common.module.scss'
 import QuestionCard from '../../components/QuestionCard'
 import { useTitle, useDebounceFn, useRequest } from 'ahooks'
@@ -7,7 +13,10 @@ import { Typography, Empty, Spin } from 'antd'
 import { UpSquareOutlined } from '@ant-design/icons'
 import { useSearchParams } from 'react-router-dom'
 import { getQuestionListService } from '../../services/question'
-import { LIST_SEARCH_PARAM_KEY, LIST_PAGE_SIZE } from '../../constant'
+import {
+  LIST_SEARCH_PARAM_KEY,
+  LIST_PAGE_SIZE,
+} from '../../constant'
 const { Title } = Typography
 
 // 问卷列表数据
@@ -85,7 +94,8 @@ const List: FC = () => {
   // 是否已经开始加载（防抖，有延迟时间）
   const [started, setStarted] = useState(false)
   // 搜索关键字
-  const keyword = searchParams.get(LIST_SEARCH_PARAM_KEY) || ''
+  const keyword =
+    searchParams.get(LIST_SEARCH_PARAM_KEY) || ''
   const [scrollTop, setScrollTop] = useState(0)
 
   // 利用ahooks的useRequest,获取到后端mock模拟的数据
@@ -122,9 +132,17 @@ const List: FC = () => {
       // 拿到'上拉加载更多'元素的底部 距离 列表盒子顶部的距离
       const { bottom } = domRect
       // 列表盒子的可视区高度
-      const listBoxHeight = (listBox.current as HTMLDivElement).clientHeight
-      const listBoxTop = (listBox.current as HTMLDivElement).scrollTop
-      console.log(domRect, bottom, listBoxHeight, listBoxTop)
+      const listBoxHeight = (
+        listBox.current as HTMLDivElement
+      ).clientHeight
+      const listBoxTop = (listBox.current as HTMLDivElement)
+        .scrollTop
+      console.log(
+        domRect,
+        bottom,
+        listBoxHeight,
+        listBoxTop
+      )
       setScrollTop(listBoxTop)
       // 滚动到底部时 bottom是736 ,listBoxHeight 是固定的572
       // 使用可以算出差值 = 736 - 572 = 164
@@ -155,17 +173,26 @@ const List: FC = () => {
     // 判断上拉加载完毕
     console.log(total, list.length)
     if (total >= list.length) {
-      listBox.current && listBox.current.addEventListener('scroll', tryLoadMore)
+      listBox.current &&
+        listBox.current.addEventListener(
+          'scroll',
+          tryLoadMore
+        )
     }
     return () => {
-      listBox.current && listBox.current.removeEventListener('scroll', tryLoadMore) // 解绑
+      listBox.current &&
+        listBox.current.removeEventListener(
+          'scroll',
+          tryLoadMore
+        ) // 解绑
     }
   }, [page])
 
   const LoadMoreContentEle = useMemo(() => {
     if (!started || loading) return <Spin />
     if (total === 0) return <Empty description="暂无数据" />
-    if (!(total >= list.length)) return <span>到底啦！</span>
+    if (!(total >= list.length))
+      return <span>到底啦！</span>
     return <span>上拉加载更多</span>
   }, [started, loading, total])
 
@@ -199,9 +226,17 @@ const List: FC = () => {
         {/* 回到顶部 */}
         <div
           className={styles.scrolltop}
-          onClick={() => ((listBox.current as HTMLDivElement).scrollTop = 0)}
+          onClick={() =>
+            ((
+              listBox.current as HTMLDivElement
+            ).scrollTop = 0)
+          }
         >
-          {scrollTop > 1000 ? <UpSquareOutlined style={{ fontSize: 30, color: 'bule' }} /> : null}
+          {scrollTop > 1000 ? (
+            <UpSquareOutlined
+              style={{ fontSize: 30, color: 'bule' }}
+            />
+          ) : null}
         </div>
       </div>
     </>

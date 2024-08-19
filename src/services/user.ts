@@ -23,7 +23,10 @@ export async function registerService(
 }
 
 // 登录接口
-export async function loginService(username: string, password: string): Promise<ResDataType> {
+export async function loginService(
+  username: string,
+  password: string
+): Promise<ResDataType> {
   const url = '/api/user/login'
   const data = await axios.post(url, { username, password })
   return data

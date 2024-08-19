@@ -35,7 +35,9 @@ const Star: FC = () => {
   // const [questionList, setQuestionList] = useState(rawQuestionList)
 
   // 获取到后端mock模拟的数据
-  const { data = {}, loading } = useLoadQuestionListData({ isStar: true })
+  const { data = {}, loading } = useLoadQuestionListData({
+    isStar: true,
+  })
   const { list = [], total = 0 } = data
 
   return (
@@ -71,7 +73,9 @@ const Star: FC = () => {
             })}
 
         {/* Empty空状态 */}
-        {!loading && list.length === 0 && <Empty description="暂无数据" />}
+        {!loading && list.length === 0 && (
+          <Empty description="暂无数据" />
+        )}
       </div>
 
       {/* 底部 */}

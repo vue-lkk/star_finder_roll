@@ -29,7 +29,12 @@ const MainLayout: FC = () => {
       <Layout>
         <Content className={styles.main}>
           {waitingUserData ? (
-            <div style={{ textAlign: 'center', marginTop: '100px' }}>
+            <div
+              style={{
+                textAlign: 'center',
+                marginTop: '100px',
+              }}
+            >
               <Spin />
             </div>
           ) : (
@@ -38,7 +43,9 @@ const MainLayout: FC = () => {
         </Content>
       </Layout>
       {/* 底部 */}
-      <Footer className={styles.footer}>星问卷 &copy;2024 - present.Created by LKK</Footer>
+      <Footer className={styles.footer}>
+        星问卷 &copy;2024 - present.Created by LKK
+      </Footer>
     </Layout>
   )
 }

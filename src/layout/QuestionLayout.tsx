@@ -14,7 +14,12 @@ const QuestionLayout: FC = () => {
     <>
       <div style={{ height: '100vh' }}>
         {waitingUserData ? (
-          <div style={{ textAlign: 'center', marginTop: '30px' }}>
+          <div
+            style={{
+              textAlign: 'center',
+              marginTop: '30px',
+            }}
+          >
             <Spin />
           </div>
         ) : (

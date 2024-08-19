@@ -1,5 +1,9 @@
 import React, { FC, useState } from 'react'
-import { Outlet, useNavigate, useLocation } from 'react-router-dom'
+import {
+  Outlet,
+  useNavigate,
+  useLocation,
+} from 'react-router-dom'
 import styles from './ManageLayout.module.scss'
 // 接口
 import { createQuestionService } from '../services/question'
@@ -35,14 +39,17 @@ const ManageLayout: FC = () => {
   //   setLoading(false)
   // }
 
-  const { loading, run: handleCreateClick } = useRequest(createQuestionService, {
-    manual: true,
-    onSuccess: result => {
-      const { id } = result
-      naviagte(`/question/edit/${id}`)
-      message.success('创建成功！')
-    },
-  })
+  const { loading, run: handleCreateClick } = useRequest(
+    createQuestionService,
+    {
+      manual: true,
+      onSuccess: result => {
+        const { id } = result
+        naviagte(`/question/edit/${id}`)
+        message.success('创建成功！')
+      },
+    }
+  )
 
   return (
     <div className={styles.container}>
@@ -62,7 +69,11 @@ const ManageLayout: FC = () => {
           {/* 分割线 */}
           <Divider style={{ border: 'none' }} />
           <Button
-            type={pathname.startsWith('/manage/list') ? 'default' : 'text'}
+            type={
+              pathname.startsWith('/manage/list')
+                ? 'default'
+                : 'text'
+            }
             size="large"
             icon={<UnorderedListOutlined />}
             onClick={() => naviagte('/manage/list')}
@@ -70,7 +81,11 @@ const ManageLayout: FC = () => {
             我的问卷
           </Button>
           <Button
-            type={pathname.startsWith('/manage/star') ? 'default' : 'text'}
+            type={
+              pathname.startsWith('/manage/star')
+                ? 'default'
+                : 'text'
+            }
             size="large"
             icon={<StarOutlined />}
             onClick={() => naviagte('/manage/star')}
@@ -78,7 +93,11 @@ const ManageLayout: FC = () => {
             星标问卷
           </Button>
           <Button
-            type={pathname.startsWith('/manage/trash') ? 'default' : 'text'}
+            type={
+              pathname.startsWith('/manage/trash')
+                ? 'default'
+                : 'text'
+            }
             size="large"
             icon={<DeleteOutlined />}
             onClick={() => naviagte('/manage/trash')}

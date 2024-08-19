@@ -1,7 +1,10 @@
 import { useEffect } from 'react'
 import useGetUserInfo from './useGetUserInfo'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { isLoginOrRegister, isNoNeeUserInfo } from '../router'
+import {
+  isLoginOrRegister,
+  isNoNeeUserInfo,
+} from '../router'
 
 function useNavPage(waitingUserData: boolean) {
   const { username } = useGetUserInfo()
